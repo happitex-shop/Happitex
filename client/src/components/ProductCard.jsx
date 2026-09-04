@@ -25,7 +25,7 @@ const ProductCard = ({ product }) => {
           <h3 className="text-[13px] font-bold text-gray-900 mb-4 whitespace-pre-wrap leading-tight">{product.name.replace('(', '\n(')}</h3>
         </Link>
         <div className="flex items-center justify-between">
-          <span className="text-red-600 font-bold text-sm">BTD : {product.price}</span>
+          <span className="text-red-600 font-bold text-sm">BDT : {product.price}</span>
           <div className="flex gap-2">
             <button className="bg-[#004D3D] text-white text-[10px] px-3 py-1.5 rounded-lg hover:bg-opacity-90 font-bold tracking-wide shadow-sm">
               Order now

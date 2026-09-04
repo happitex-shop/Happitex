@@ -50,11 +50,11 @@ const Home = () => {
                }}>
              
              {/* Slide 1 */}
-             <div className={`absolute inset-0 transition-opacity duration-1000 ${currentSlide === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
-               <div className="absolute left-[2%] sm:left-[5%] top-0 bottom-0 flex w-[55%] h-full pt-3 pb-3 sm:pt-8 sm:pb-8 pl-1 sm:pl-4">
+             <div className={`absolute inset-0 transition-opacity duration-1000 ${currentSlide === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+               <div className="absolute left-[2%] sm:left-[4%] top-0 bottom-0 flex items-center justify-start gap-1.5 sm:gap-3 lg:gap-4 w-[56%] sm:w-[58%] lg:w-[60%] h-full pt-3 pb-3 sm:pt-6 sm:pb-6 pl-1 sm:pl-3">
                  
                  {/* Left Image */}
-                 <div className="w-[36%] h-[75%] mt-[15%] relative z-10" style={{ filter: 'drop-shadow(3px 3px 6px rgba(0,0,0,0.3))' }}>
+                 <div className="flex-1 h-[74%] sm:h-[78%] mt-[12%] relative" style={{ filter: 'drop-shadow(3px 3px 6px rgba(0,0,0,0.25))' }}>
                     <div className="w-full h-full bg-black" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
                         <div className="absolute top-[1px] left-[1px] right-[1px] bottom-[1px]" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
                             <img src="/assets/HS1_p1.jpg" className="w-full h-full object-cover" alt="Saree 1" />
@@ -63,7 +63,7 @@ const Home = () => {
                  </div>
                  
                  {/* Middle Image */}
-                 <div className="w-[42%] h-[90%] mt-[2%] relative z-30 -ml-4 sm:-ml-8 lg:-ml-12" style={{ filter: 'drop-shadow(5px 5px 10px rgba(0,0,0,0.5))' }}>
+                 <div className="flex-1 h-[88%] sm:h-[92%] mt-[0%] relative" style={{ filter: 'drop-shadow(3px 3px 6px rgba(0,0,0,0.25))' }}>
                     <div className="w-full h-full bg-black" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
                         <div className="absolute top-[1px] left-[1px] right-[1px] bottom-[1px]" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
                             <img src="/assets/HS1_p2.jpg" className="w-full h-full object-cover" alt="Saree 2" />
@@ -72,7 +72,7 @@ const Home = () => {
                  </div>
                  
                  {/* Right Image */}
-                 <div className="w-[36%] h-[75%] mt-[0%] relative z-10 -ml-4 sm:-ml-8 lg:-ml-12" style={{ filter: 'drop-shadow(3px 3px 6px rgba(0,0,0,0.3))' }}>
+                 <div className="flex-1 h-[78%] sm:h-[82%] mt-[6%] relative" style={{ filter: 'drop-shadow(3px 3px 6px rgba(0,0,0,0.25))' }}>
                     <div className="w-full h-full bg-black" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
                         <div className="absolute top-[1px] left-[1px] right-[1px] bottom-[1px]" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
                             <img src="/assets/HS1_p3.jpg" className="w-full h-full object-cover" alt="Saree 3" />
@@ -81,19 +81,19 @@ const Home = () => {
                  </div>
                </div>
                
-               <div className="absolute right-[3%] sm:right-[5%] top-0 bottom-0 w-[42%] sm:w-[40%] flex flex-col justify-center items-end text-right pr-2 sm:pr-0">
-                 <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[6.5rem] font-kapakana text-black mb-1 sm:mb-2 leading-none">Happitex</h1>
-                 <p className="text-[11px] sm:text-lg md:text-xl lg:text-3xl font-poppins text-black font-semibold mb-0.5">বিশ্বস্ত অনলাইন</p>
-                 <p className="text-[11px] sm:text-lg md:text-xl lg:text-3xl font-poppins text-black font-semibold">গিফট শপ</p>
+               <div className="absolute right-[3%] sm:right-[5%] top-0 bottom-0 w-[40%] sm:w-[38%] flex flex-col justify-center items-end text-right pr-2 sm:pr-0">
+                 <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[6rem] font-kapakana text-black mb-1 sm:mb-2 leading-none">Happitex</h1>
+                 <p className="text-[10px] sm:text-base md:text-lg lg:text-2xl font-poppins text-black font-semibold mb-0.5">বিশ্বস্ত অনলাইন</p>
+                 <p className="text-[10px] sm:text-base md:text-lg lg:text-2xl font-poppins text-black font-semibold">গিফট শপ</p>
                </div>
              </div>
 
              {/* Slide 2 */}
-             <div className={`absolute inset-0 transition-opacity duration-1000 ${currentSlide === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
-               <div className="absolute left-[2%] sm:left-[5%] top-0 bottom-0 flex w-[50%] sm:w-[55%] h-full pt-3 pb-3 sm:pt-8 sm:pb-8 pl-1 sm:pl-4">
+             <div className={`absolute inset-0 transition-opacity duration-1000 ${currentSlide === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
+               <div className="absolute left-[2%] sm:left-[4%] top-0 bottom-0 flex items-center justify-start gap-1.5 sm:gap-3 lg:gap-4 w-[52%] sm:w-[54%] lg:w-[56%] h-full pt-3 pb-3 sm:pt-6 sm:pb-6 pl-1 sm:pl-3">
                  
                  {/* Left Image */}
-                 <div className="w-[36%] h-[75%] mt-[20%] relative z-10" style={{ filter: 'drop-shadow(3px 3px 6px rgba(0,0,0,0.3))' }}>
+                 <div className="flex-1 h-[74%] sm:h-[78%] mt-[14%] relative" style={{ filter: 'drop-shadow(3px 3px 6px rgba(0,0,0,0.25))' }}>
                     <div className="w-full h-full bg-black" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
                         <div className="absolute top-[1px] left-[1px] right-[1px] bottom-[1px]" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
                             <img src="/assets/HS2_p1.jpg" className="w-full h-full object-cover" alt="Saree 1" />
@@ -102,7 +102,7 @@ const Home = () => {
                  </div>
                  
                  {/* Middle Image */}
-                 <div className="w-[36%] h-[80%] mt-[10%] relative z-30 -ml-4 sm:-ml-8 lg:-ml-12" style={{ filter: 'drop-shadow(5px 5px 10px rgba(0,0,0,0.5))' }}>
+                 <div className="flex-1 h-[82%] sm:h-[86%] mt-[7%] relative" style={{ filter: 'drop-shadow(3px 3px 6px rgba(0,0,0,0.25))' }}>
                     <div className="w-full h-full bg-black" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
                         <div className="absolute top-[1px] left-[1px] right-[1px] bottom-[1px]" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
                             <img src="/assets/HS2_p2.jpg" className="w-full h-full object-cover" alt="Saree 2" />
@@ -111,7 +111,7 @@ const Home = () => {
                  </div>
                  
                  {/* Right Image */}
-                 <div className="w-[42%] h-[90%] mt-[0%] relative z-10 -ml-4 sm:-ml-8 lg:-ml-12" style={{ filter: 'drop-shadow(3px 3px 6px rgba(0,0,0,0.3))' }}>
+                 <div className="flex-1 h-[90%] sm:h-[94%] mt-[0%] relative" style={{ filter: 'drop-shadow(3px 3px 6px rgba(0,0,0,0.25))' }}>
                     <div className="w-full h-full bg-black" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
                         <div className="absolute top-[1px] left-[1px] right-[1px] bottom-[1px]" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
                             <img src="/assets/HS2_p3.jpg" className="w-full h-full object-cover" alt="Saree 3" />
@@ -120,11 +120,11 @@ const Home = () => {
                  </div>
                </div>
                
-               <div className="absolute right-[2%] top-0 bottom-0 w-[46%] sm:w-[40%] flex flex-col justify-center items-end text-right pr-2 sm:pr-0">
-                 <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-[5.5rem] font-alkalami text-black mb-1 sm:mb-4 leading-none italic">Tradition</h1>
+               <div className="absolute right-[2%] top-0 bottom-0 w-[44%] sm:w-[42%] flex flex-col justify-center items-end text-right pr-2 sm:pr-0">
+                 <h1 className="text-lg sm:text-3xl md:text-4xl lg:text-[5rem] font-alkalami text-black mb-1 sm:mb-4 leading-none italic">Tradition</h1>
                  <div className="font-poppins text-black text-[8px] sm:text-xs lg:text-[13px] font-medium space-y-0.5 sm:space-y-1.5 leading-tight sm:leading-snug">
-                   <p className="font-bold text-[9px] sm:text-[14px]">জন্মদিন, বিবাহ বার্ষিকী, সারপ্রাইজ কিংবা</p>
-                   <p className="font-bold text-[9px] sm:text-[14px]">বিশেষ দিনের জন্য</p>
+                   <p className="font-bold text-[9px] sm:text-[13px]">জন্মদিন, বিবাহ বার্ষিকী, সারপ্রাইজ কিংবা</p>
+                   <p className="font-bold text-[9px] sm:text-[13px]">বিশেষ দিনের জন্য</p>
                    <p className="hidden sm:block">&gt;বিভিন্ন কম্বো প্যাকেজ</p>
                    <p>&gt;কাস্টমাইজ গিফট কম্বো সুবিধা</p>
                    <p>&gt;ক্যাশ অন ডেলিভারি</p>
@@ -134,7 +134,7 @@ const Home = () => {
              </div>
 
              {/* Slide 3 */}
-             <div className={`absolute inset-0 transition-opacity duration-1000 ${currentSlide === 2 ? 'opacity-100 z-10' : 'opacity-0 z-0'} flex flex-col pt-3 sm:pt-8 pb-6 sm:pb-10 px-2 sm:px-8`}>
+             <div className={`absolute inset-0 transition-opacity duration-1000 ${currentSlide === 2 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'} flex flex-col pt-3 sm:pt-8 pb-6 sm:pb-10 px-2 sm:px-8`}>
                <h1 className="text-base sm:text-3xl lg:text-[3rem] font-poppins text-black text-center mb-2 sm:mb-6 font-medium tracking-wide">Our Collections</h1>
                <div className="flex-1 flex justify-between gap-1 sm:gap-3 lg:gap-5 w-full overflow-hidden pb-4 sm:pb-0">
                  

@@ -74,7 +74,7 @@ const ProductDetail = () => {
           <div className="flex flex-col sm:flex-row gap-4">
             {/* Price Pill */}
             <div className="flex-1 bg-transparent px-6 py-3 rounded-[30px] border border-gray-400 text-center">
-              <span className="text-red-600 font-bold">Price : {product.price} BTD</span>
+              <span className="text-red-600 font-bold">Price : {product.price} BDT</span>
             </div>
             {/* Category Pill */}
             <div className="flex-1 bg-transparent px-6 py-3 rounded-[30px] border border-gray-400 text-center">

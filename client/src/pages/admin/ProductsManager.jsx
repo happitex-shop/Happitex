@@ -224,7 +224,7 @@ const ProductsManager = () => {
                 className="border border-gray-400 rounded-lg px-4 pt-2 pb-6 outline-none focus:border-black w-full"
                 required
               />
-              <span className="absolute right-3 bottom-1 text-red-600 font-bold text-sm">BTD</span>
+              <span className="absolute right-3 bottom-1 text-red-600 font-bold text-sm">BDT</span>
             </div>
             
             <div className="w-1/2">
@@ -259,7 +259,7 @@ const ProductsManager = () => {
                   placeholder="Delivery Charge"
                   required
                 />
-                <span className="absolute right-3 top-2 text-red-600 font-bold text-sm">BTD</span>
+                <span className="absolute right-3 top-2 text-red-600 font-bold text-sm">BDT</span>
               </div>
             </div>
             

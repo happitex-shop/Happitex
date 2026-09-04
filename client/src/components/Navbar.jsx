@@ -100,7 +100,7 @@ const Navbar = () => {
                     />
                     <div className="flex flex-col">
                       <span className="text-sm font-semibold text-gray-800 line-clamp-1">{product.name}</span>
-                      <span className="text-xs font-bold text-red-600">{product.price} BTD</span>
+                      <span className="text-xs font-bold text-red-600">{product.price} BDT</span>
                     </div>
                   </div>
                 ))
