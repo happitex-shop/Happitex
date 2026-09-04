@@ -38,12 +38,16 @@ export const AuthProvider = ({ children }) => {
   };
 
   const updateUser = async (updateData) => {
-    const config = { headers: { Authorization: `Bearer ${user.token}` } };
-    const { data } = await axios.put('/api/auth/profile', updateData, config);
-    const updated = { ...data, token: user.token };
-    setUser(updated);
-    localStorage.setItem('userInfo', JSON.stringify(updated));
-    return updated;
+    try {
+      const config = { headers: { Authorization: `Bearer ${user.token}` } };
+      const { data } = await axios.put('/api/auth/profile', updateData, config);
+      const updated = { ...data, token: user.token };
+      setUser(updated);
+      localStorage.setItem('userInfo', JSON.stringify(updated));
+      return { success: true, user: updated };
+    } catch (err) {
+      return { success: false, error: err.response?.data?.message || 'Update failed' };
+    }
   };
 
   const logout = () => {
@@ -52,7 +56,16 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, adminLogin, register, updateUser, logout, loading }}>
+    <AuthContext.Provider value={{ 
+      user, 
+      login, 
+      adminLogin, 
+      register, 
+      updateUser, 
+      updateAdminProfile: updateUser, 
+      logout, 
+      loading 
+    }}>
       {children}
     </AuthContext.Provider>
   );

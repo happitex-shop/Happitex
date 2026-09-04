@@ -18,12 +18,16 @@ const AdminSettings = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const result = await updateAdminProfile({ phone, email, password });
-    if (result.success) {
+    const updatePayload = { phone, email };
+    if (password && password.trim()) {
+      updatePayload.password = password.trim();
+    }
+    const result = await updateAdminProfile(updatePayload);
+    if (result && result.success) {
       alert('Admin info updated successfully!');
       setPassword('');
     } else {
-      alert(result.error);
+      alert(result?.error || 'Update failed');
     }
   };
 

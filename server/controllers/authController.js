@@ -122,28 +122,54 @@ export const getUserProfile = async (req, res) => {
 // @route   PUT /api/auth/profile
 // @access  Private
 export const updateUserProfile = async (req, res) => {
-  const user = await User.findById(req.user._id);
+  try {
+    const user = await User.findById(req.user._id);
 
-  if (user) {
-    user.name = req.body.name || user.name;
-    user.phone = req.body.phone || user.phone;
-    user.email = req.body.email || user.email;
+    if (user) {
+      if (req.body.phone && req.body.phone.trim() && req.body.phone.trim() !== user.phone) {
+        const phoneExists = await User.findOne({ phone: req.body.phone.trim(), _id: { $ne: user._id } });
+        if (phoneExists) {
+          return res.status(400).json({ message: 'Phone number already in use' });
+        }
+        user.phone = req.body.phone.trim();
+      }
 
-    if (req.body.password) {
-      const salt = await bcrypt.genSalt(10);
-      user.passwordHash = await bcrypt.hash(req.body.password, salt);
+      if (req.body.email !== undefined) {
+        const trimmedEmail = req.body.email ? req.body.email.trim() : '';
+        if (trimmedEmail && trimmedEmail !== user.email) {
+          const emailExists = await User.findOne({ email: trimmedEmail, _id: { $ne: user._id } });
+          if (emailExists) {
+            return res.status(400).json({ message: 'Email already in use' });
+          }
+          user.email = trimmedEmail;
+        } else if (!trimmedEmail) {
+          user.email = undefined;
+        }
+      }
+
+      if (req.body.name && req.body.name.trim()) {
+        user.name = req.body.name.trim();
+      }
+
+      if (req.body.password && req.body.password.trim()) {
+        const salt = await bcrypt.genSalt(10);
+        user.passwordHash = await bcrypt.hash(req.body.password.trim(), salt);
+      }
+
+      const updatedUser = await user.save();
+      res.json({
+        _id: updatedUser._id,
+        name: updatedUser.name,
+        phone: updatedUser.phone,
+        email: updatedUser.email,
+        role: updatedUser.role,
+      });
+    } else {
+      res.status(404).json({ message: 'User not found' });
     }
-
-    const updatedUser = await user.save();
-    res.json({
-      _id: updatedUser._id,
-      name: updatedUser.name,
-      phone: updatedUser.phone,
-      email: updatedUser.email,
-      role: updatedUser.role,
-    });
-  } else {
-    res.status(404).json({ message: 'User not found' });
+  } catch (error) {
+    console.error('Error updating profile:', error);
+    res.status(500).json({ message: error.message || 'Server error updating profile' });
   }
 };
 
