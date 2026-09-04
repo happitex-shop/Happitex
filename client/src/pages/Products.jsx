@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import ProductCard from '../components/ProductCard';
 
@@ -6,6 +7,8 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [searchParams] = useSearchParams();
+  const searchKeyword = searchParams.get('search') || '';
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,15 +26,24 @@ const Products = () => {
     fetchData();
   }, []);
 
-  const filteredProducts = selectedCategory 
-    ? products.filter(p => p.category === selectedCategory || p.category?._id === selectedCategory) 
-    : products;
+  const filteredProducts = products.filter(p => {
+    const matchesCategory = selectedCategory 
+      ? (p.category === selectedCategory || p.category?._id === selectedCategory)
+      : true;
+    const matchesSearch = searchKeyword.trim()
+      ? (p.name.toLowerCase().includes(searchKeyword.toLowerCase().trim()) || 
+         (p.description && p.description.toLowerCase().includes(searchKeyword.toLowerCase().trim())))
+      : true;
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <div className="bg-cream min-h-screen py-8">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-center text-xl md:text-2xl font-bold text-primary mb-6 font-poppins">
-          {selectedCategory ? 'আপনার নির্বাচিত শাড়ি' : 'আপনার পছন্দের শাড়িটি বেছে নিন,'}
+          {searchKeyword 
+            ? `"${searchKeyword}" এর জন্য অনুসন্ধান ফলাফল` 
+            : (selectedCategory ? 'আপনার নির্বাচিত শাড়ি' : 'আপনার পছন্দের শাড়িটি বেছে নিন,')}
         </h2>
 
         {/* Category Pills */}
