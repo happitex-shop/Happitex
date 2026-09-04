@@ -51,7 +51,7 @@ const Home = () => {
              
              {/* Slide 1 */}
              <div className={`absolute inset-0 transition-opacity duration-1000 ${currentSlide === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-               <div className="absolute left-[2%] sm:left-[3%] lg:left-[4%] top-0 bottom-0 flex items-start justify-start gap-1 sm:gap-1.5 lg:gap-2.5 w-[50%] sm:w-[52%] lg:w-[52%] h-full pt-2 sm:pt-4">
+               <div className="absolute left-[2%] sm:left-[2.5%] lg:left-[3%] top-0 bottom-0 flex items-start justify-start gap-0.5 sm:gap-1 lg:gap-1.5 w-[53%] sm:w-[54%] lg:w-[55%] h-full pt-2 sm:pt-4">
                  
                  {/* Left Image */}
                  <div className="flex-1 h-[74%] sm:h-[76%] lg:h-[78%] mt-[16%] sm:mt-[18%] lg:mt-[20%] relative" style={{ filter: 'drop-shadow(2px 3px 6px rgba(0,0,0,0.35))' }}>
@@ -81,7 +81,7 @@ const Home = () => {
                  </div>
                </div>
                
-               <div className="absolute left-[58%] sm:left-[60%] lg:left-[61%] right-[2%] sm:right-[3%] lg:right-[3%] top-0 bottom-0 flex flex-col justify-center items-start text-left z-20">
+               <div className="absolute left-[58%] sm:left-[59%] lg:left-[60%] right-[2%] sm:right-[3%] lg:right-[3%] top-0 bottom-0 flex flex-col justify-center items-start text-left z-20">
                  <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[4.6rem] xl:text-[5.2rem] font-great-vibes text-black mb-1 sm:mb-2 leading-none whitespace-nowrap">Happitex</h1>
                  <p className="text-[10px] sm:text-sm md:text-lg lg:text-[1.65rem] font-poppins text-black font-bold leading-tight whitespace-nowrap">বিশ্বস্ত অনলাইন</p>
                  <p className="text-[10px] sm:text-sm md:text-lg lg:text-[1.65rem] font-poppins text-black font-bold leading-tight mt-0.5 sm:mt-1 whitespace-nowrap">গিফট শপ</p>
@@ -90,7 +90,7 @@ const Home = () => {
 
              {/* Slide 2 */}
              <div className={`absolute inset-0 transition-opacity duration-1000 ${currentSlide === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-               <div className="absolute left-[2%] sm:left-[3%] lg:left-[4%] top-0 bottom-0 flex items-start justify-start gap-1 sm:gap-1.5 lg:gap-2.5 w-[50%] sm:w-[52%] lg:w-[52%] h-full pt-2 sm:pt-4">
+               <div className="absolute left-[2%] sm:left-[2.5%] lg:left-[3%] top-0 bottom-0 flex items-start justify-start gap-0.5 sm:gap-1 lg:gap-1.5 w-[53%] sm:w-[54%] lg:w-[55%] h-full pt-2 sm:pt-4">
                  
                  {/* Left Image */}
                  <div className="flex-1 h-[74%] sm:h-[76%] lg:h-[78%] mt-[16%] sm:mt-[18%] lg:mt-[20%] relative" style={{ filter: 'drop-shadow(2px 3px 6px rgba(0,0,0,0.35))' }}>
@@ -120,7 +120,7 @@ const Home = () => {
                  </div>
                </div>
                
-               <div className="absolute left-[58%] sm:left-[60%] lg:left-[61%] right-[2%] sm:right-[3%] lg:right-[3%] top-0 bottom-0 flex flex-col justify-center items-start text-left z-20">
+               <div className="absolute left-[58%] sm:left-[59%] lg:left-[60%] right-[2%] sm:right-[3%] lg:right-[3%] top-0 bottom-0 flex flex-col justify-center items-start text-left z-20">
                  <h1 className="text-xl sm:text-3xl md:text-4xl lg:text-[4.2rem] xl:text-[4.6rem] font-great-vibes text-black mb-1 sm:mb-2 leading-none whitespace-nowrap">Tradition</h1>
                  <div className="font-poppins text-black text-[7px] sm:text-[10px] md:text-[11.5px] lg:text-[13.5px] font-medium space-y-0.5 sm:space-y-1 leading-tight sm:leading-snug">
                    <p className="font-bold text-[8px] sm:text-[11px] md:text-xs lg:text-[14px]">জন্মদিন, বিবাহ বার্ষিকী, সারপ্রাইজ কিংবা</p>
