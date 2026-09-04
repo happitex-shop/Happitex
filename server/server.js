@@ -9,9 +9,60 @@ import orderRoutes from './routes/orderRoutes.js';
 import settingsRoutes from './routes/settingsRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
 
+import User from './models/User.js';
+import Category from './models/Category.js';
+import SiteSettings from './models/SiteSettings.js';
+import bcrypt from 'bcrypt';
+
 dotenv.config();
 
-connectDB();
+const initDB = async () => {
+  try {
+    const adminExists = await User.findOne({ role: 'admin' });
+    if (!adminExists) {
+      const salt = await bcrypt.genSalt(10);
+      const passwordHash = await bcrypt.hash('admin123', salt);
+      await User.create({
+        name: 'Admin',
+        phone: '01700000000',
+        email: 'admin@happitex.com',
+        passwordHash,
+        role: 'admin'
+      });
+      console.log('Default Admin user created: 01700000000 / admin123');
+    }
+
+    const categoryCount = await Category.countDocuments();
+    if (categoryCount === 0) {
+      const defaultCategories = [
+        { name: 'Katan', slug: 'katan' },
+        { name: 'Jamdani', slug: 'jamdani' },
+        { name: 'Rajshahi Silk', slug: 'rajshahi-silk' },
+        { name: 'Dhakai Cotton', slug: 'dhakai-cotton' },
+        { name: 'Batik', slug: 'batik' }
+      ];
+      await Category.insertMany(defaultCategories);
+      console.log('Default categories initialized');
+    }
+
+    const settingsExists = await SiteSettings.findOne();
+    if (!settingsExists) {
+      await SiteSettings.create({
+        facebookPageName: 'Happitex',
+        facebookLink: 'https://facebook.com/happitex',
+        whatsappNumber: '+8801830439602',
+        phoneNumber: '+8801830439602',
+        email: 'anamul8505@gmail.com',
+        address: 'Sirajgonj, Rajshahi'
+      });
+      console.log('Default site settings initialized');
+    }
+  } catch (err) {
+    console.error('Error during auto-initialization:', err);
+  }
+};
+
+connectDB().then(() => initDB());
 
 const app = express();
 
