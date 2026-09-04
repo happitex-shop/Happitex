@@ -83,8 +83,10 @@ const Home = () => {
                
                <div className="absolute left-[58%] sm:left-[59%] lg:left-[60%] right-[2%] sm:right-[3%] lg:right-[3%] top-0 bottom-0 flex flex-col justify-center items-start text-left z-20">
                  <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[4.6rem] xl:text-[5.2rem] font-great-vibes text-black mb-1 sm:mb-2 leading-none whitespace-nowrap">Happitex</h1>
-                 <p className="text-[10px] sm:text-sm md:text-lg lg:text-[1.65rem] font-poppins text-black font-bold leading-tight whitespace-nowrap">বিশ্বস্ত অনলাইন</p>
-                 <p className="text-[10px] sm:text-sm md:text-lg lg:text-[1.65rem] font-poppins text-black font-bold leading-tight mt-0.5 sm:mt-1 whitespace-nowrap">গিফট শপ</p>
+                 <div className="pl-2 sm:pl-4 lg:pl-6">
+                   <p className="text-[10px] sm:text-sm md:text-lg lg:text-[1.65rem] font-poppins text-black font-bold leading-tight whitespace-nowrap">বিশ্বস্ত অনলাইন</p>
+                   <p className="text-[10px] sm:text-sm md:text-lg lg:text-[1.65rem] font-poppins text-black font-bold leading-tight mt-0.5 sm:mt-1 whitespace-nowrap">গিফট শপ</p>
+                 </div>
                </div>
              </div>
 
