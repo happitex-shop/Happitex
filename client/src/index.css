@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #004D3D;
+  --color-accent: #06954B;
+  --color-gold: #AB945E;
+  --color-cream: #FEF9F3;
+  --color-coral: #FF5A82;
+  --color-orange: #F3AD6D;
+  --font-poppins: "Poppins", "Noto Sans Bengali", sans-serif;
+  --font-kapakana: "Kapakana", "Great Vibes", cursive;
+  --font-alkalami: "Alkalami", serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-gray-800);
+    font-family: var(--font-poppins);
+  }
+}
