@@ -51,37 +51,37 @@ const Home = () => {
              
              {/* Slide 1 */}
              <div className={`absolute inset-0 transition-opacity duration-1000 ${currentSlide === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-               <div className="absolute left-[2%] sm:left-[4%] top-0 bottom-0 flex items-center justify-start gap-2 sm:gap-3 lg:gap-5 w-[56%] sm:w-[57%] lg:w-[58%] h-full pt-3 pb-3 sm:pt-6 sm:pb-6 pl-1 sm:pl-4 lg:pl-8">
+               <div className="absolute left-[2%] sm:left-[4%] top-0 bottom-0 flex items-start justify-start gap-2 sm:gap-3.5 lg:gap-5 w-[54%] sm:w-[56%] lg:w-[58%] h-full pt-2 sm:pt-4 pl-1 sm:pl-4 lg:pl-8">
                  
                  {/* Left Image */}
-                 <div className="flex-1 h-[72%] sm:h-[76%] mt-[14%] sm:mt-[16%] relative" style={{ filter: 'drop-shadow(3px 4px 6px rgba(0,0,0,0.3))' }}>
-                    <div className="w-full h-full bg-black relative" style={{ clipPath: 'polygon(12% 0, 100% 0, 88% 100%, 0 100%)' }}>
-                        <div className="absolute top-[1.5px] left-[1.5px] right-[1.5px] bottom-[1.5px]" style={{ clipPath: 'polygon(12% 0, 100% 0, 88% 100%, 0 100%)' }}>
+                 <div className="flex-1 h-[74%] sm:h-[76%] lg:h-[78%] mt-[16%] sm:mt-[18%] lg:mt-[20%] relative" style={{ filter: 'drop-shadow(3px 4px 6px rgba(0,0,0,0.3))' }}>
+                    <div className="w-full h-full bg-black relative" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
+                        <div className="absolute top-[1.5px] left-[1.5px] right-[1.5px] bottom-[1.5px]" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
                             <img src="/assets/HS1_p1.jpg" className="w-full h-full object-cover" alt="Saree 1" />
                         </div>
                     </div>
                  </div>
                  
                  {/* Middle Image */}
-                 <div className="flex-1 h-[88%] sm:h-[92%] mt-[0%] relative" style={{ filter: 'drop-shadow(3px 4px 6px rgba(0,0,0,0.3))' }}>
-                    <div className="w-full h-full bg-black relative" style={{ clipPath: 'polygon(12% 0, 100% 0, 88% 100%, 0 100%)' }}>
-                        <div className="absolute top-[1.5px] left-[1.5px] right-[1.5px] bottom-[1.5px]" style={{ clipPath: 'polygon(12% 0, 100% 0, 88% 100%, 0 100%)' }}>
+                 <div className="flex-1 h-[74%] sm:h-[76%] lg:h-[78%] mt-[8%] sm:mt-[9%] lg:mt-[10%] relative" style={{ filter: 'drop-shadow(3px 4px 6px rgba(0,0,0,0.3))' }}>
+                    <div className="w-full h-full bg-black relative" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
+                        <div className="absolute top-[1.5px] left-[1.5px] right-[1.5px] bottom-[1.5px]" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
                             <img src="/assets/HS1_p2.jpg" className="w-full h-full object-cover" alt="Saree 2" />
                         </div>
                     </div>
                  </div>
                  
                  {/* Right Image */}
-                 <div className="flex-1 h-[80%] sm:h-[84%] mt-[5%] sm:mt-[6%] relative" style={{ filter: 'drop-shadow(3px 4px 6px rgba(0,0,0,0.3))' }}>
-                    <div className="w-full h-full bg-black relative" style={{ clipPath: 'polygon(12% 0, 100% 0, 88% 100%, 0 100%)' }}>
-                        <div className="absolute top-[1.5px] left-[1.5px] right-[1.5px] bottom-[1.5px]" style={{ clipPath: 'polygon(12% 0, 100% 0, 88% 100%, 0 100%)' }}>
+                 <div className="flex-1 h-[74%] sm:h-[76%] lg:h-[78%] mt-[0%] relative" style={{ filter: 'drop-shadow(3px 4px 6px rgba(0,0,0,0.3))' }}>
+                    <div className="w-full h-full bg-black relative" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
+                        <div className="absolute top-[1.5px] left-[1.5px] right-[1.5px] bottom-[1.5px]" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
                             <img src="/assets/HS1_p3.jpg" className="w-full h-full object-cover" alt="Saree 3" />
                         </div>
                     </div>
                  </div>
                </div>
                
-               <div className="absolute right-[2%] sm:right-[4%] lg:right-[6%] top-0 bottom-0 w-[40%] sm:w-[39%] lg:w-[38%] flex flex-col justify-center items-start text-left pl-2 sm:pl-4">
+               <div className="absolute right-[2%] sm:right-[4%] lg:right-[6%] top-0 bottom-0 w-[42%] sm:w-[41%] lg:w-[40%] flex flex-col justify-center items-start text-left pl-2 sm:pl-4">
                  <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[6.8rem] font-great-vibes text-black mb-1 sm:mb-3 leading-none">Happitex</h1>
                  <p className="text-xs sm:text-lg md:text-xl lg:text-3xl font-poppins text-black font-bold leading-tight">বিশ্বস্ত অনলাইন</p>
                  <p className="text-xs sm:text-lg md:text-xl lg:text-3xl font-poppins text-black font-bold leading-tight mt-0.5 sm:mt-1">গিফট শপ</p>
@@ -90,30 +90,30 @@ const Home = () => {
 
              {/* Slide 2 */}
              <div className={`absolute inset-0 transition-opacity duration-1000 ${currentSlide === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-               <div className="absolute left-[2%] sm:left-[4%] top-0 bottom-0 flex items-center justify-start gap-2 sm:gap-3 lg:gap-5 w-[56%] sm:w-[57%] lg:w-[58%] h-full pt-3 pb-3 sm:pt-6 sm:pb-6 pl-1 sm:pl-4 lg:pl-8">
+               <div className="absolute left-[2%] sm:left-[4%] top-0 bottom-0 flex items-start justify-start gap-2 sm:gap-3.5 lg:gap-5 w-[54%] sm:w-[56%] lg:w-[58%] h-full pt-2 sm:pt-4 pl-1 sm:pl-4 lg:pl-8">
                  
                  {/* Left Image */}
-                 <div className="flex-1 h-[72%] sm:h-[76%] mt-[16%] sm:mt-[18%] relative" style={{ filter: 'drop-shadow(3px 4px 6px rgba(0,0,0,0.3))' }}>
-                    <div className="w-full h-full bg-black relative" style={{ clipPath: 'polygon(12% 0, 100% 0, 88% 100%, 0 100%)' }}>
-                        <div className="absolute top-[1.5px] left-[1.5px] right-[1.5px] bottom-[1.5px]" style={{ clipPath: 'polygon(12% 0, 100% 0, 88% 100%, 0 100%)' }}>
+                 <div className="flex-1 h-[74%] sm:h-[76%] lg:h-[78%] mt-[16%] sm:mt-[18%] lg:mt-[20%] relative" style={{ filter: 'drop-shadow(3px 4px 6px rgba(0,0,0,0.3))' }}>
+                    <div className="w-full h-full bg-black relative" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
+                        <div className="absolute top-[1.5px] left-[1.5px] right-[1.5px] bottom-[1.5px]" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
                             <img src="/assets/HS2_p1.jpg" className="w-full h-full object-cover" alt="Saree 1" />
                         </div>
                     </div>
                  </div>
                  
                  {/* Middle Image */}
-                 <div className="flex-1 h-[80%] sm:h-[84%] mt-[8%] sm:mt-[9%] relative" style={{ filter: 'drop-shadow(3px 4px 6px rgba(0,0,0,0.3))' }}>
-                    <div className="w-full h-full bg-black relative" style={{ clipPath: 'polygon(12% 0, 100% 0, 88% 100%, 0 100%)' }}>
-                        <div className="absolute top-[1.5px] left-[1.5px] right-[1.5px] bottom-[1.5px]" style={{ clipPath: 'polygon(12% 0, 100% 0, 88% 100%, 0 100%)' }}>
+                 <div className="flex-1 h-[74%] sm:h-[76%] lg:h-[78%] mt-[8%] sm:mt-[9%] lg:mt-[10%] relative" style={{ filter: 'drop-shadow(3px 4px 6px rgba(0,0,0,0.3))' }}>
+                    <div className="w-full h-full bg-black relative" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
+                        <div className="absolute top-[1.5px] left-[1.5px] right-[1.5px] bottom-[1.5px]" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
                             <img src="/assets/HS2_p2.jpg" className="w-full h-full object-cover" alt="Saree 2" />
                         </div>
                     </div>
                  </div>
                  
                  {/* Right Image */}
-                 <div className="flex-1 h-[90%] sm:h-[94%] mt-[0%] relative" style={{ filter: 'drop-shadow(3px 4px 6px rgba(0,0,0,0.3))' }}>
-                    <div className="w-full h-full bg-black relative" style={{ clipPath: 'polygon(12% 0, 100% 0, 88% 100%, 0 100%)' }}>
-                        <div className="absolute top-[1.5px] left-[1.5px] right-[1.5px] bottom-[1.5px]" style={{ clipPath: 'polygon(12% 0, 100% 0, 88% 100%, 0 100%)' }}>
+                 <div className="flex-1 h-[74%] sm:h-[76%] lg:h-[78%] mt-[0%] relative" style={{ filter: 'drop-shadow(3px 4px 6px rgba(0,0,0,0.3))' }}>
+                    <div className="w-full h-full bg-black relative" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
+                        <div className="absolute top-[1.5px] left-[1.5px] right-[1.5px] bottom-[1.5px]" style={{ clipPath: 'polygon(15% 0, 100% 0, 85% 100%, 0 100%)' }}>
                             <img src="/assets/HS2_p3.jpg" className="w-full h-full object-cover" alt="Saree 3" />
                         </div>
                     </div>
