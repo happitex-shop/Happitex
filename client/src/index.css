@@ -8,8 +8,9 @@
   --color-coral: #FF5A82;
   --color-orange: #F3AD6D;
   --font-poppins: "Poppins", "Noto Sans Bengali", sans-serif;
-  --font-kapakana: "Kapakana", "Great Vibes", cursive;
-  --font-alkalami: "Alkalami", serif;
+  --font-kapakana: "Great Vibes", cursive;
+  --font-great-vibes: "Great Vibes", cursive;
+  --font-alkalami: "Alkalami", "Great Vibes", cursive;
   --font-inter: "Inter", sans-serif;
 }
 
