@@ -178,7 +178,7 @@ const ProductsManager = () => {
         
         {/* Left Side - Image Upload */}
         <div className="flex flex-col items-center gap-4 w-full md:w-1/3">
-          <div className="w-48 h-48 bg-white border-2 border-dashed border-gray-300 flex items-center justify-center rounded-lg relative overflow-hidden">
+          <div className="w-52 h-72 bg-white border-2 border-dashed border-gray-300 flex items-center justify-center rounded-2xl relative overflow-hidden shadow-inner">
             {image ? (
               <img src={image} alt="Preview" className="w-full h-full object-cover" />
             ) : (
@@ -186,15 +186,18 @@ const ProductsManager = () => {
                 <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
                   <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <p className="mt-1 text-sm text-gray-500 font-bold">Image size 245/300</p>
+                <p className="mt-2 text-sm text-gray-800 font-bold">Standard Size</p>
+                <p className="text-xs text-gray-500 font-semibold mt-0.5">800 × 1200 px</p>
+                <p className="text-[11px] text-gray-400 mt-1">(Any size will auto-fit)</p>
               </div>
             )}
             <input type="file" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onChange={uploadFileHandler} />
           </div>
-          {uploading && <p className="text-sm">Uploading...</p>}
-          <button type="button" className="bg-[#004D3D] text-white font-bold py-2 px-8 rounded-full hover:bg-opacity-90">
+          {uploading && <p className="text-sm font-semibold text-primary">Uploading image...</p>}
+          <label className="bg-[#004D3D] text-white font-bold py-2.5 px-8 rounded-full hover:bg-opacity-90 cursor-pointer text-sm shadow-sm">
             Upload Image
-          </button>
+            <input type="file" className="hidden" onChange={uploadFileHandler} />
+          </label>
         </div>
 
         {/* Right Side - Form Fields */}

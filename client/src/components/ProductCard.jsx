@@ -12,12 +12,12 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="bg-[#FAF6F0] rounded-t-[100px] rounded-b-[30px] shadow-sm flex flex-col font-poppins pb-6 h-full product-container">
-      <Link to={`/products/${product._id}`}>
+    <div className="bg-[#FAF6F0] rounded-t-[100px] rounded-b-[30px] shadow-sm flex flex-col font-poppins pb-6 h-full product-container overflow-hidden">
+      <Link to={`/products/${product._id}`} className="block w-full h-[360px] overflow-hidden rounded-t-[100px] rounded-b-[20px] bg-gray-100">
         <img 
           src={product.images && product.images.length > 0 ? product.images[0] : ''} 
           alt={product.name} 
-          className="w-full h-[360px] object-cover rounded-t-[100px] rounded-b-[20px]" 
+          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" 
         />
       </Link>
       <div className="px-4 mt-5 flex-grow flex flex-col justify-between">

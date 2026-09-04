@@ -55,12 +55,13 @@ const ProductDetail = () => {
       <div className="max-w-6xl mx-auto px-4 py-12 flex flex-col md:flex-row gap-12 relative z-10">
         {/* Left Image (Arched) */}
         <div className="md:w-5/12 flex justify-center">
-          <img 
-            src={product.images?.[0] || product.image || ''} 
-            alt={product.name} 
-            className="w-full max-w-md object-cover shadow-sm rounded-t-[120px] rounded-b-[40px] bg-gray-200" 
-            style={{ aspectRatio: '4/5' }}
-          />
+          <div className="w-full max-w-md overflow-hidden rounded-t-[120px] rounded-b-[40px] shadow-sm bg-gray-100" style={{ aspectRatio: '4/5' }}>
+            <img 
+              src={product.images?.[0] || product.image || ''} 
+              alt={product.name} 
+              className="w-full h-full object-cover" 
+            />
+          </div>
         </div>
 
         {/* Right Info */}
@@ -102,17 +103,25 @@ const ProductDetail = () => {
           <div className="flex flex-col sm:flex-row gap-4 mt-2">
             <button 
               onClick={() => window.open(`https://wa.me/${(settings?.whatsappNumber || '').replace(/[^0-9]/g, '')}`, '_blank')}
-              className="flex-1 bg-gray-900 text-white py-3 rounded-xl font-medium flex items-center justify-center gap-3 hover:bg-black shadow-md"
+              className="flex-1 bg-[#111827] text-white py-3.5 rounded-xl font-medium flex items-center justify-center gap-3 hover:bg-black shadow-md transition-colors"
             >
-              <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.122.553 4.195 1.602 6.012l-1.637 5.96 6.096-1.599A11.96 11.96 0 0012.031 24c6.646 0 12.031-5.385 12.031-12.031S18.677 0 12.031 0zm3.645 17.202c-.156.438-.9 .842-1.258.874-.359.032-.782.16-2.483-.541-2.091-.861-3.419-2.996-3.523-3.136-.104-.141-2.035-2.613-.199-4.708.41-.466.892-.582 1.189-.582.302 0 .604.015.864.032.274.016.643-.105.998.756.37.915 1.258 3.082 1.368 3.305.109.223.187.484.032.793-.156.313-.234.5-.468.782-.234.281-.497.609-.703.829-.234.25-.483.515-.208.984.275.469 1.226 2.022 2.64 3.284 1.819 1.625 3.34 2.125 3.808 2.343.468.219.742.188 1.015-.125.273-.312 1.187-1.375 1.5-1.844.312-.469.625-.391 1.047-.234.422.156 2.671 1.266 3.125 1.484.453.219.754.344.863.532.109.188.109 1.109-.047 1.547z"/></svg>
-              {settings?.whatsappNumber ? `+${settings.whatsappNumber}` : '+880 1830-439602'}
+              <svg className="w-5 h-5 text-[#25D366] shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.122.553 4.195 1.602 6.012l-1.637 5.96 6.096-1.599A11.96 11.96 0 0012.031 24c6.646 0 12.031-5.385 12.031-12.031S18.677 0 12.031 0zm3.645 17.202c-.156.438-.9 .842-1.258.874-.359.032-.782.16-2.483-.541-2.091-.861-3.419-2.996-3.523-3.136-.104-.141-2.035-2.613-.199-4.708.41-.466.892-.582 1.189-.582.302 0 .604.015.864.032.274.016.643-.105.998.756.37.915 1.258 3.082 1.368 3.305.109.223.187.484.032.793-.156.313-.234.5-.468.782-.234.281-.497.609-.703.829-.234.25-.483.515-.208.984.275.469 1.226 2.022 2.64 3.284 1.819 1.625 3.34 2.125 3.808 2.343.468.219.742.188 1.015-.125.273-.312 1.187-1.375 1.5-1.844.312-.469.625-.391 1.047-.234.422.156 2.671 1.266 3.125 1.484.453.219.754.344.863.532.109.188.109 1.109-.047 1.547z"/>
+              </svg>
+              <span className="font-semibold">
+                {settings?.whatsappNumber 
+                  ? (settings.whatsappNumber.startsWith('+') ? settings.whatsappNumber : `+${settings.whatsappNumber}`) 
+                  : '+880 1830-439602'}
+              </span>
             </button>
             <button 
               onClick={() => window.open(settings?.facebookLink || '#', '_blank')}
-              className="flex-1 bg-blue-900 text-white py-3 rounded-xl font-medium flex items-center justify-center gap-3 hover:bg-blue-950 shadow-md"
+              className="flex-1 bg-[#1E3A8A] text-white py-3.5 rounded-xl font-medium flex items-center justify-center gap-3 hover:bg-[#172554] shadow-md transition-colors"
             >
-              <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-              {settings?.facebookName || 'Happitex'}
+              <svg className="w-5 h-5 text-[#60A5FA] shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+              <span className="font-semibold">{settings?.facebookPageName || settings?.facebookName || 'Happitex'}</span>
             </button>
           </div>
         </div>
