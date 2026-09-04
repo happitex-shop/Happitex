@@ -42,7 +42,7 @@ const Home = () => {
         <div className="flex flex-col lg:flex-row shadow-xl bg-white border border-gray-200 overflow-hidden rounded-xl">
           
           {/* Banner Slider */}
-          <div className="flex-[3] relative h-[260px] sm:h-[380px] md:h-[460px] lg:h-[550px] bg-cream overflow-hidden"
+          <div className="w-full lg:flex-[3] relative h-[250px] sm:h-[380px] md:h-[460px] lg:h-[550px] min-h-[250px] bg-cream overflow-hidden shrink-0"
                style={{ 
                  backgroundImage: "url('/assets/BackGround_HS.png')", 
                  backgroundSize: 'cover', 
@@ -51,7 +51,7 @@ const Home = () => {
              
              {/* Slide 1 */}
              <div className={`absolute inset-0 transition-opacity duration-1000 ${currentSlide === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
-               <div className="absolute left-[2%] sm:left-[5%] top-0 bottom-0 flex w-[55%] h-full pt-4 pb-4 sm:pt-8 sm:pb-8 pl-1 sm:pl-4">
+               <div className="absolute left-[2%] sm:left-[5%] top-0 bottom-0 flex w-[55%] h-full pt-3 pb-3 sm:pt-8 sm:pb-8 pl-1 sm:pl-4">
                  
                  {/* Left Image */}
                  <div className="w-[36%] h-[75%] mt-[15%] relative z-10" style={{ filter: 'drop-shadow(3px 3px 6px rgba(0,0,0,0.3))' }}>
@@ -83,14 +83,14 @@ const Home = () => {
                
                <div className="absolute right-[3%] sm:right-[5%] top-0 bottom-0 w-[42%] sm:w-[40%] flex flex-col justify-center items-end text-right pr-2 sm:pr-0">
                  <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[6.5rem] font-kapakana text-black mb-1 sm:mb-2 leading-none">Happitex</h1>
-                 <p className="text-xs sm:text-lg md:text-xl lg:text-3xl font-poppins text-black font-semibold mb-0.5">বিশ্বস্ত অনলাইন</p>
-                 <p className="text-xs sm:text-lg md:text-xl lg:text-3xl font-poppins text-black font-semibold">গিফট শপ</p>
+                 <p className="text-[11px] sm:text-lg md:text-xl lg:text-3xl font-poppins text-black font-semibold mb-0.5">বিশ্বস্ত অনলাইন</p>
+                 <p className="text-[11px] sm:text-lg md:text-xl lg:text-3xl font-poppins text-black font-semibold">গিফট শপ</p>
                </div>
              </div>
 
              {/* Slide 2 */}
              <div className={`absolute inset-0 transition-opacity duration-1000 ${currentSlide === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
-               <div className="absolute left-[2%] sm:left-[5%] top-0 bottom-0 flex w-[50%] sm:w-[55%] h-full pt-4 pb-4 sm:pt-8 sm:pb-8 pl-1 sm:pl-4">
+               <div className="absolute left-[2%] sm:left-[5%] top-0 bottom-0 flex w-[50%] sm:w-[55%] h-full pt-3 pb-3 sm:pt-8 sm:pb-8 pl-1 sm:pl-4">
                  
                  {/* Left Image */}
                  <div className="w-[36%] h-[75%] mt-[20%] relative z-10" style={{ filter: 'drop-shadow(3px 3px 6px rgba(0,0,0,0.3))' }}>
@@ -134,9 +134,9 @@ const Home = () => {
              </div>
 
              {/* Slide 3 */}
-             <div className={`absolute inset-0 transition-opacity duration-1000 ${currentSlide === 2 ? 'opacity-100 z-10' : 'opacity-0 z-0'} flex flex-col pt-4 sm:pt-8 pb-8 sm:pb-10 px-3 sm:px-8`}>
-               <h1 className="text-xl sm:text-3xl lg:text-[3rem] font-poppins text-black text-center mb-3 sm:mb-6 font-medium tracking-wide">Our Collections</h1>
-               <div className="flex-1 flex justify-between gap-1.5 sm:gap-3 lg:gap-5 w-full overflow-hidden">
+             <div className={`absolute inset-0 transition-opacity duration-1000 ${currentSlide === 2 ? 'opacity-100 z-10' : 'opacity-0 z-0'} flex flex-col pt-3 sm:pt-8 pb-6 sm:pb-10 px-2 sm:px-8`}>
+               <h1 className="text-base sm:text-3xl lg:text-[3rem] font-poppins text-black text-center mb-2 sm:mb-6 font-medium tracking-wide">Our Collections</h1>
+               <div className="flex-1 flex justify-between gap-1 sm:gap-3 lg:gap-5 w-full overflow-hidden pb-4 sm:pb-0">
                  
                  <div className="flex-1 h-full overflow-hidden rounded shadow-sm">
                     <img src="/assets/HS3_p1.jpg" className="w-full h-full object-cover" alt="Collection 1" />
@@ -162,15 +162,15 @@ const Home = () => {
              </div>
              
              {/* Slide Indicators */}
-             <div className="absolute bottom-3 sm:bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
-                <button onClick={() => setCurrentSlide(0)} className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-colors ${currentSlide === 0 ? 'bg-gray-700' : 'bg-gray-300'}`}></button>
-                <button onClick={() => setCurrentSlide(1)} className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-colors ${currentSlide === 1 ? 'bg-gray-700' : 'bg-gray-300'}`}></button>
-                <button onClick={() => setCurrentSlide(2)} className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-colors ${currentSlide === 2 ? 'bg-gray-700' : 'bg-gray-300'}`}></button>
+             <div className="absolute bottom-2 sm:bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
+                <button onClick={() => setCurrentSlide(0)} className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${currentSlide === 0 ? 'bg-gray-700' : 'bg-gray-300'}`}></button>
+                <button onClick={() => setCurrentSlide(1)} className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${currentSlide === 1 ? 'bg-gray-700' : 'bg-gray-300'}`}></button>
+                <button onClick={() => setCurrentSlide(2)} className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${currentSlide === 2 ? 'bg-gray-700' : 'bg-gray-300'}`}></button>
              </div>
           </div>
 
           {/* Categories Sidebar */}
-          <div className="flex-1 lg:max-w-[320px] w-full flex flex-col bg-white border-t lg:border-t-0 lg:border-l border-gray-200 shrink-0 z-20">
+          <div className="w-full lg:flex-1 lg:max-w-[320px] flex flex-col bg-white border-t lg:border-t-0 lg:border-l border-gray-200 shrink-0 z-20">
             <div className="bg-[#004D3D] text-white text-center py-3 sm:py-4 lg:py-5 font-poppins font-bold text-base sm:text-lg lg:text-xl tracking-wide flex justify-between px-6">
               <span className="flex-1 text-center">Categories</span>
               {selectedCategory && (
