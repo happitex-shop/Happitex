@@ -5,6 +5,7 @@ import MiniCart from './MiniCart';
 import ProfileMini from './ProfileMini';
 import ContactUsMini from './ContactUsMini';
 import { AuthContext } from '../context/AuthContext';
+import { CartContext } from '../context/CartContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,6 +19,8 @@ const Navbar = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   
   const { user } = useContext(AuthContext);
+  const { cartItems } = useContext(CartContext);
+  const cartCount = cartItems ? cartItems.reduce((acc, item) => acc + (item.qty || 1), 0) : 0;
   const navigate = useNavigate();
   const location = useLocation();
   const searchRef = useRef(null);
@@ -257,12 +260,17 @@ const Navbar = () => {
             <button 
               id="nav-cart-icon" 
               onClick={() => setIsCartOpen(!isCartOpen)} 
-              className="bg-white w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-black hover:text-[#004D3D] shadow-sm transition-colors"
+              className="bg-white w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-black hover:text-[#004D3D] shadow-sm transition-colors relative"
               aria-label="Cart"
             >
               <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-[#E53935] text-white text-[10px] sm:text-xs font-bold min-w-[18px] sm:min-w-[20px] h-[18px] sm:h-[20px] px-1 rounded-full flex items-center justify-center shadow-md ring-2 ring-white leading-none animate-pulse">
+                  {cartCount > 99 ? '99+' : cartCount}
+                </span>
+              )}
             </button>
             <MiniCart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
           </div>
@@ -460,6 +468,26 @@ const Navbar = () => {
                 <p className="text-[11px] uppercase font-poppins font-bold text-gray-500 tracking-wider px-3 mb-1">
                   Account & Support
                 </p>
+
+                <button
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    setIsCartOpen(true);
+                  }}
+                  className="flex items-center justify-between px-4 py-2.5 rounded-xl text-sm font-poppins font-medium text-gray-800 hover:bg-white/80 transition-colors text-left"
+                >
+                  <div className="flex items-center gap-3">
+                    <svg className="w-4 h-4 text-[#004D3D]" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span>Shopping Cart</span>
+                  </div>
+                  {cartCount > 0 && (
+                    <span className="bg-[#E53935] text-white text-[11px] font-bold px-2 py-0.5 rounded-full shadow-xs">
+                      {cartCount}
+                    </span>
+                  )}
+                </button>
 
                 {user ? (
                   <Link
