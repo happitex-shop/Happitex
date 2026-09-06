@@ -12,38 +12,6 @@
 
 ---
 
-## ✨ Key Features
-
-### 🛍️ Customer Storefront
-- **Signature Hero Showcase**: Diagonal 3-rhombus parallel staircase banner slider with smooth autoplay and custom calligraphy typography.
-- **Mobile-First Responsive Header**:
-  - Top header with instant search button, user profile modal, and mini-cart drawer.
-  - Sub-navigation bar on mobile for fast 1-tap browsing (*Home, Products, Shop Location, Track Order*).
-  - Left slide-in mobile navigation drawer with quick support links.
-- **Real-Time Live Search**: Instant autocomplete search with thumbnail previews, live price in BDT, and keyboard navigation.
-- **Curated Category Collections**: Filterable category pills (Katan, Jamdani, Rajshahi Silk, Dhakai Cotton, Batik, and custom categories).
-- **Interactive Shopping Cart**:
-  - Curved 2D particle fly-to-cart animation on order click.
-  - Slide-out mini cart with real-time quantity steppers and subtotal calculations.
-- **Seamless Order Tracking**: Customers can check live delivery milestones (*Order Placed → Order Confirmed → Shipped → On Delivery → Received*) simply by entering their phone number or email.
-- **1-Click WhatsApp Support & Ordering**: Direct inquiry button that opens WhatsApp with pre-formatted product details.
-- **Interactive Store Location**: Integrated Google Maps and physical address for store visits.
-
-### 🛡️ Admin Management Panel (`/admin`)
-- **Order Management**: Real-time status update pipeline, category filters, and an order **Remove** action.
-- **Customer Directory**: Registered customer ledger with direct **Remove** capability.
-- **Product Management**: Full CRUD product management with auto-fit image aspect ratio and dynamic category creator.
-- **Fast Client-Side Image Compression**: Automatic browser canvas compression (max 1000×1400px, 85% quality) ensuring fast uploads and lightweight data transfer.
-- **Site Settings & Social Manager**: Dynamic update controls for store contact numbers, WhatsApp, Facebook page link, and email.
-- **Admin Profile & Security**: Update admin phone, email, and password securely with Bcrypt encryption.
-
-### ☁️ Permanent Cloud Image Storage
-- In-memory buffer image handling streamed directly to **MongoDB Atlas Cloud Storage**.
-- Image assets remain 100% persistent and never get deleted or broken across server reboots.
-- Automatic `onError` image fallbacks across all product views.
-
----
-
 ## 🛠️ Technology Stack
 
 | Layer | Technology |
