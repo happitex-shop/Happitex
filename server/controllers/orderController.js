@@ -13,6 +13,7 @@ export const addOrderItems = async (req, res) => {
       paymentMethod,
       itemsPrice,
       shippingPrice,
+      deliveryArea,
       totalPrice,
       customerName,
       customerPhone,
@@ -64,6 +65,7 @@ export const addOrderItems = async (req, res) => {
         })),
         subtotal: itemsPrice,
         deliveryCharge: shippingPrice,
+        deliveryArea: deliveryArea || 'Inside Dhaka',
         total: totalPrice,
         paymentMethod: 'COD',
         status: 'Order Placed'

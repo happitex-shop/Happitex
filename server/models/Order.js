@@ -13,6 +13,7 @@ const orderSchema = new mongoose.Schema({
   }],
   subtotal: { type: Number, required: true },
   deliveryCharge: { type: Number, required: true },
+  deliveryArea: { type: String, default: 'Inside Dhaka' },
   total: { type: Number, required: true },
   paymentMethod: { type: String, default: 'COD' },
   status: { 

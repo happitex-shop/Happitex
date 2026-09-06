@@ -6,6 +6,8 @@ const productSchema = new mongoose.Schema({
   category: { type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true },
   description: { type: String, required: true },
   deliveryCharge: { type: Number, default: 120 },
+  deliveryChargeInside: { type: Number, default: 60 },
+  deliveryChargeOutside: { type: Number, default: 120 },
   images: [{ type: String }],
   status: { type: String, enum: ['active', 'draft', 'out_of_stock'], default: 'active' }
 }, { timestamps: true });

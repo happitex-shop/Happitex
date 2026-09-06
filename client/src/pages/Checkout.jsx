@@ -16,6 +16,7 @@ const Checkout = () => {
     note: ''
   });
 
+  const [deliveryArea, setDeliveryArea] = useState('inside');
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -27,10 +28,17 @@ const Checkout = () => {
     }
   }, [cartItems.length]);
 
-  // Get the maximum delivery charge among all items in cart, defaulting to 120 for older products
+  // Calculate delivery charge based on selected area ('inside' or 'outside')
   const deliveryCharge = cartItems.length > 0 
-    ? Math.max(...cartItems.map(item => item.deliveryCharge || 120))
-    : 120;
+    ? Math.max(...cartItems.map(item => {
+        const prod = item.product || {};
+        if (deliveryArea === 'inside') {
+          return prod.deliveryChargeInside !== undefined ? prod.deliveryChargeInside : 60;
+        } else {
+          return prod.deliveryChargeOutside !== undefined ? prod.deliveryChargeOutside : (prod.deliveryCharge || 120);
+        }
+      }))
+    : (deliveryArea === 'inside' ? 60 : 120);
   
   const total = subtotal + deliveryCharge;
 
@@ -52,11 +60,12 @@ const Checkout = () => {
           product: item.product._id
         })),
         shippingAddress: {
-          address: formData.address
+          address: `${formData.address} [${deliveryArea === 'inside' ? 'Inside Dhaka' : 'Outside Dhaka'}]`
         },
         paymentMethod: 'Cash on delivery',
         itemsPrice: subtotal,
         shippingPrice: deliveryCharge,
+        deliveryArea: deliveryArea === 'inside' ? 'Inside Dhaka' : 'Outside Dhaka',
         totalPrice: total,
         customerName: formData.name,
         customerPhone: formData.phone,
@@ -140,8 +149,40 @@ const Checkout = () => {
               <span>Subtotal<span className="ml-10">:</span></span>
               <span className="text-red-600">{subtotal} BDT</span>
             </div>
-            <div className="flex justify-between text-sm font-bold text-black">
-              <span>Delivery Charge <span className="ml-2">:</span></span>
+
+            {/* Delivery Area Toggle in Summary Box */}
+            <div className="flex flex-col gap-2 pt-2 border-t border-gray-200">
+              <span className="text-xs font-bold text-gray-800">Delivery Area :</span>
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  type="button"
+                  onClick={() => setDeliveryArea('inside')}
+                  className={`py-2 px-3 rounded-full text-xs font-bold transition-all border flex items-center justify-center gap-1.5 ${
+                    deliveryArea === 'inside'
+                      ? 'bg-[#004D3D] text-white border-[#004D3D] shadow-sm ring-2 ring-offset-1 ring-[#004D3D]'
+                      : 'bg-gray-50 text-gray-700 border-gray-300 hover:bg-gray-100'
+                  }`}
+                >
+                  <span className={`w-2 h-2 rounded-full ${deliveryArea === 'inside' ? 'bg-white' : 'bg-gray-400'}`}></span>
+                  Inside Dhaka
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setDeliveryArea('outside')}
+                  className={`py-2 px-3 rounded-full text-xs font-bold transition-all border flex items-center justify-center gap-1.5 ${
+                    deliveryArea === 'outside'
+                      ? 'bg-[#004D3D] text-white border-[#004D3D] shadow-sm ring-2 ring-offset-1 ring-[#004D3D]'
+                      : 'bg-gray-50 text-gray-700 border-gray-300 hover:bg-gray-100'
+                  }`}
+                >
+                  <span className={`w-2 h-2 rounded-full ${deliveryArea === 'outside' ? 'bg-white' : 'bg-gray-400'}`}></span>
+                  Outside Dhaka
+                </button>
+              </div>
+            </div>
+
+            <div className="flex justify-between text-sm font-bold text-black items-center">
+              <span>Delivery Charge <span className="text-xs font-normal text-gray-500">({deliveryArea === 'inside' ? 'Inside Dhaka' : 'Outside Dhaka'})</span> <span className="ml-1">:</span></span>
               <span className="text-red-600">{deliveryCharge} BDT</span>
             </div>
             <hr className="border-gray-200" />
@@ -180,6 +221,37 @@ const Checkout = () => {
                 value={formData.phone} onChange={handleChange}
                 className="w-full bg-cream border border-gray-400 px-6 py-4 rounded-full outline-none text-sm text-gray-800 focus:border-primary shadow-inner"
               />
+            </div>
+
+            {/* Delivery Area Selector in Form */}
+            <div className="flex flex-col gap-1.5">
+              <label className="text-xs font-bold text-gray-900 ml-4">Select Delivery Location</label>
+              <div className="grid grid-cols-2 gap-3 px-1">
+                <button
+                  type="button"
+                  onClick={() => setDeliveryArea('inside')}
+                  className={`py-3.5 px-4 rounded-full text-sm font-bold transition-all border flex items-center justify-center gap-2 ${
+                    deliveryArea === 'inside'
+                      ? 'bg-[#004D3D] text-white border-[#004D3D] shadow-md ring-2 ring-offset-1 ring-[#004D3D]'
+                      : 'bg-white text-gray-700 border-gray-400 hover:bg-cream shadow-2xs'
+                  }`}
+                >
+                  <span className={`w-2.5 h-2.5 rounded-full ${deliveryArea === 'inside' ? 'bg-white' : 'bg-gray-400'}`}></span>
+                  Inside Dhaka
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setDeliveryArea('outside')}
+                  className={`py-3.5 px-4 rounded-full text-sm font-bold transition-all border flex items-center justify-center gap-2 ${
+                    deliveryArea === 'outside'
+                      ? 'bg-[#004D3D] text-white border-[#004D3D] shadow-md ring-2 ring-offset-1 ring-[#004D3D]'
+                      : 'bg-white text-gray-700 border-gray-400 hover:bg-cream shadow-2xs'
+                  }`}
+                >
+                  <span className={`w-2.5 h-2.5 rounded-full ${deliveryArea === 'outside' ? 'bg-white' : 'bg-gray-400'}`}></span>
+                  Outside Dhaka
+                </button>
+              </div>
             </div>
 
             <div className="flex flex-col gap-1">

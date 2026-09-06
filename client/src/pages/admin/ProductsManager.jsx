@@ -14,7 +14,8 @@ const ProductsManager = () => {
   const [price, setPrice] = useState('');
   const [category, setCategory] = useState('');
   const [categoryName, setCategoryName] = useState('');
-  const [deliveryCharge, setDeliveryCharge] = useState(120);
+  const [deliveryChargeInside, setDeliveryChargeInside] = useState(60);
+  const [deliveryChargeOutside, setDeliveryChargeOutside] = useState(120);
   const [description, setDescription] = useState('');
   const [image, setImage] = useState('');
   const [uploading, setUploading] = useState(false);
@@ -126,12 +127,18 @@ const ProductsManager = () => {
       
       if (editingId) {
         await axios.put(`/api/products/${editingId}`, {
-          name, price, category, description, image, deliveryCharge
+          name, price, category, description, image, 
+          deliveryChargeInside: Number(deliveryChargeInside),
+          deliveryChargeOutside: Number(deliveryChargeOutside),
+          deliveryCharge: Number(deliveryChargeOutside)
         }, config);
         alert("Product updated successfully!");
       } else {
         await axios.post('/api/products', {
-          name, price, category, description, image, deliveryCharge
+          name, price, category, description, image, 
+          deliveryChargeInside: Number(deliveryChargeInside),
+          deliveryChargeOutside: Number(deliveryChargeOutside),
+          deliveryCharge: Number(deliveryChargeOutside)
         }, config);
         alert("Product added successfully!");
       }
@@ -143,7 +150,8 @@ const ProductsManager = () => {
       setCategoryName('');
       setDescription('');
       setImage('');
-      setDeliveryCharge(120);
+      setDeliveryChargeInside(60);
+      setDeliveryChargeOutside(120);
       setEditingId(null);
       fetchProducts();
     } catch (error) {
@@ -161,7 +169,8 @@ const ProductsManager = () => {
     setCategoryName(cat ? cat.name : '');
     setDescription(product.description);
     setImage(product.images?.[0] || '');
-    setDeliveryCharge(product.deliveryCharge || 120);
+    setDeliveryChargeInside(product.deliveryChargeInside !== undefined ? product.deliveryChargeInside : 60);
+    setDeliveryChargeOutside(product.deliveryChargeOutside !== undefined ? product.deliveryChargeOutside : (product.deliveryCharge || 120));
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -303,23 +312,40 @@ const ProductsManager = () => {
             ></textarea>
           </div>
           
-          <div className="flex justify-end items-end gap-4 mt-2">
-            <div className="flex flex-col">
-              <label className="text-sm font-bold text-black ml-1 mb-1 hidden">Delivery Charge</label>
-              <div className="relative">
+          <div className="flex flex-wrap justify-end items-center gap-3 mt-3">
+            {/* Inside Dhaka */}
+            <div className="flex items-center gap-1.5 border border-gray-400 rounded-lg px-3 py-2 bg-white shadow-2xs">
+              <label className="text-xs font-bold text-gray-800 whitespace-nowrap">Inside Dhaka :</label>
+              <div className="relative flex items-center">
                 <input 
                   type="number" 
-                  value={deliveryCharge}
-                  onChange={(e) => setDeliveryCharge(e.target.value)}
-                  className="border border-gray-400 rounded-lg px-4 py-2 outline-none focus:border-black w-[150px]"
-                  placeholder="Delivery Charge"
+                  value={deliveryChargeInside}
+                  onChange={(e) => setDeliveryChargeInside(e.target.value)}
+                  className="w-14 font-bold text-sm outline-none text-right pr-7 text-black"
+                  placeholder="60"
                   required
                 />
-                <span className="absolute right-3 top-2 text-red-600 font-bold text-sm">BDT</span>
+                <span className="absolute right-0 text-red-600 font-bold text-xs">BDT</span>
+              </div>
+            </div>
+
+            {/* Outside Dhaka */}
+            <div className="flex items-center gap-1.5 border border-gray-400 rounded-lg px-3 py-2 bg-white shadow-2xs">
+              <label className="text-xs font-bold text-gray-800 whitespace-nowrap">Outside Dhaka :</label>
+              <div className="relative flex items-center">
+                <input 
+                  type="number" 
+                  value={deliveryChargeOutside}
+                  onChange={(e) => setDeliveryChargeOutside(e.target.value)}
+                  className="w-14 font-bold text-sm outline-none text-right pr-7 text-black"
+                  placeholder="120"
+                  required
+                />
+                <span className="absolute right-0 text-red-600 font-bold text-xs">BDT</span>
               </div>
             </div>
             
-            <button type="submit" className="bg-[#004D3D] text-white font-bold py-2 px-8 rounded-lg hover:bg-opacity-90 transition-all">
+            <button type="submit" className="bg-[#004D3D] text-white font-bold py-2.5 px-8 rounded-lg hover:bg-opacity-90 transition-all shadow-sm">
               {editingId ? 'Confirm' : 'Add'}
             </button>
           </div>

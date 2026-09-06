@@ -34,14 +34,16 @@ export const getProductById = async (req, res) => {
 // @access  Private/Admin
 export const createProduct = async (req, res) => {
   try {
-    const { name, price, category, description, image, deliveryCharge } = req.body;
+    const { name, price, category, description, image, deliveryCharge, deliveryChargeInside, deliveryChargeOutside } = req.body;
     
     const product = new Product({
       name,
       price,
       category,
       description,
-      deliveryCharge,
+      deliveryCharge: deliveryChargeOutside || deliveryCharge || 120,
+      deliveryChargeInside: deliveryChargeInside !== undefined ? Number(deliveryChargeInside) : 60,
+      deliveryChargeOutside: deliveryChargeOutside !== undefined ? Number(deliveryChargeOutside) : (deliveryCharge || 120),
       images: [image],
       status: 'active'
     });
@@ -58,7 +60,7 @@ export const createProduct = async (req, res) => {
 // @access  Private/Admin
 export const updateProduct = async (req, res) => {
   try {
-    const { name, price, description, images, image, category, status, deliveryCharge } = req.body;
+    const { name, price, description, images, image, category, status, deliveryCharge, deliveryChargeInside, deliveryChargeOutside } = req.body;
     const product = await Product.findById(req.params.id);
 
     if (product) {
@@ -68,7 +70,9 @@ export const updateProduct = async (req, res) => {
       product.images = image ? [image] : (images || product.images);
       product.category = category || product.category;
       product.status = status || product.status;
-      if (deliveryCharge !== undefined) product.deliveryCharge = deliveryCharge;
+      if (deliveryCharge !== undefined) product.deliveryCharge = Number(deliveryCharge);
+      if (deliveryChargeInside !== undefined) product.deliveryChargeInside = Number(deliveryChargeInside);
+      if (deliveryChargeOutside !== undefined) product.deliveryChargeOutside = Number(deliveryChargeOutside);
 
       const updatedProduct = await product.save();
       res.json(updatedProduct);
