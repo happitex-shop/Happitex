@@ -44,15 +44,15 @@ const Customers = () => {
         <h2 className="text-2xl md:text-3xl font-extrabold text-black">All the Customers Information</h2>
       </div>
 
-      <div className="w-full bg-white border border-gray-400 rounded-2xl shadow-sm overflow-hidden mb-12">
-        <div className="overflow-x-auto w-full">
-          <table className="w-full text-left border-collapse min-w-[640px]">
+      <div className="w-full bg-white border border-gray-400 rounded-2xl shadow-sm mb-12 overflow-x-auto md:overflow-visible">
+        <div className="w-full">
+          <table className="w-full text-left border-collapse min-w-[640px] md:min-w-full">
             <thead>
               <tr className="border-b border-gray-400 bg-gray-50/80">
-                <th className="py-4 px-4 font-bold text-sm md:text-base border-r border-gray-400 text-center w-[25%]">Customer Name</th>
+                <th className="py-4 px-4 font-bold text-sm md:text-base border-r border-gray-400 text-center w-[25%] rounded-tl-2xl">Customer Name</th>
                 <th className="py-4 px-4 font-bold text-sm md:text-base border-r border-gray-400 text-center w-[25%]">Phone Number</th>
                 <th className="py-4 px-4 font-bold text-sm md:text-base border-r border-gray-400 text-center w-[30%]">Customer Email</th>
-                <th className="py-4 px-4 font-bold text-sm md:text-base text-center w-[20%]">Action</th>
+                <th className="py-4 px-4 font-bold text-sm md:text-base text-center w-[20%] rounded-tr-2xl">Action</th>
               </tr>
             </thead>
             <tbody>

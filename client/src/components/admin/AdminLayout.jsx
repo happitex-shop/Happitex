@@ -31,8 +31,8 @@ const AdminLayout = () => {
       ></div>
 
       {/* Left Sidebar */}
-      <div className="w-[220px] md:w-[250px] bg-white z-10 flex flex-col shadow-[4px_0_10px_rgba(0,0,0,0.05)] border-r border-gray-100 min-h-screen shrink-0 sticky top-0 self-start">
-        <div className="bg-[#B99A6D] text-white text-center py-5 font-bold text-lg rounded-br-[40px] shadow-sm relative z-20">
+      <div className="w-[220px] md:w-[250px] bg-white z-10 flex flex-col shadow-[4px_0_10px_rgba(0,0,0,0.05)] border-r border-gray-100 h-screen shrink-0 sticky top-0 self-start overflow-y-auto scrollbar-none">
+        <div className="bg-[#B99A6D] text-white text-center py-5 font-bold text-lg rounded-br-[40px] shadow-sm relative z-20 shrink-0">
           Admin Panel
         </div>
         

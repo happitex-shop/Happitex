@@ -87,16 +87,16 @@ const Orders = () => {
         ))}
       </div>
 
-      <div className="w-full bg-white border border-gray-400 rounded-2xl shadow-sm overflow-hidden mb-12">
-        <div className="overflow-x-auto w-full">
-          <table className="w-full text-left border-collapse min-w-[700px]">
+      <div className="w-full bg-white border border-gray-400 rounded-2xl shadow-sm mb-12 overflow-x-auto md:overflow-visible">
+        <div className="w-full">
+          <table className="w-full text-left border-collapse min-w-[700px] md:min-w-full">
             <thead>
               <tr className="border-b border-gray-400 bg-gray-50/80">
-                <th className="py-4 px-4 font-bold text-sm md:text-base border-r border-gray-400 text-center w-[20%]">Customer Name</th>
+                <th className="py-4 px-4 font-bold text-sm md:text-base border-r border-gray-400 text-center w-[20%] rounded-tl-2xl">Customer Name</th>
                 <th className="py-4 px-4 font-bold text-sm md:text-base border-r border-gray-400 text-center w-[22%]">Customer Email</th>
                 <th className="py-4 px-4 font-bold text-sm md:text-base border-r border-gray-400 text-center w-[18%]">Customer Number</th>
                 <th className="py-4 px-4 font-bold text-sm md:text-base border-r border-gray-400 text-center w-[25%]">Status Update</th>
-                <th className="py-4 px-4 font-bold text-sm md:text-base text-center w-[15%]">Action</th>
+                <th className="py-4 px-4 font-bold text-sm md:text-base text-center w-[15%] rounded-tr-2xl">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -127,7 +127,7 @@ const Orders = () => {
                           </div>
                           
                           {/* Dropdown Menu (visible on hover) */}
-                          <div className="absolute right-0 top-full mt-2 bg-white border border-gray-200 rounded-[20px] shadow-xl w-48 z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all flex flex-col p-4 gap-2.5">
+                          <div className="absolute right-0 top-full mt-2 bg-white border border-gray-200 rounded-[20px] shadow-xl w-48 z-50 hidden group-hover:flex flex-col p-4 gap-2.5">
                             <div className="text-xs text-gray-500 font-semibold mb-1">Status mini bar</div>
                             {statusOptions.map(st => (
                               <button 
