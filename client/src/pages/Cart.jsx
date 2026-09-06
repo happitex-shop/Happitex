@@ -23,7 +23,15 @@ const Cart = () => {
             <div className="bg-white rounded-[40px] shadow-sm p-6 md:p-10 border border-gray-200">
               {cartItems.map((item, idx) => (
                 <div key={item.product._id} className={`flex flex-col sm:flex-row items-center gap-6 py-6 ${idx !== cartItems.length - 1 ? 'border-b border-gray-200' : ''}`}>
-                  <img src={item.product.images[0] || '/assets/sample-product.jpg'} alt={item.product.name} className="w-24 h-32 object-cover rounded-xl shadow-sm" />
+                  <img 
+                    src={(item.product.images && item.product.images[0]) || '/assets/sample-product.jpg'} 
+                    alt={item.product.name} 
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = '/assets/sample-product.jpg';
+                    }}
+                    className="w-24 h-32 object-cover rounded-xl shadow-sm" 
+                  />
                   
                   <div className="flex-1 text-center sm:text-left">
                     <h3 className="text-lg font-bold text-gray-800">{item.product.name}</h3>

@@ -57,8 +57,12 @@ const ProductDetail = () => {
         <div className="md:w-5/12 flex justify-center">
           <div className="w-full max-w-md overflow-hidden rounded-t-[120px] rounded-b-[40px] shadow-sm bg-gray-100" style={{ aspectRatio: '4/5' }}>
             <img 
-              src={product.images?.[0] || product.image || ''} 
+              src={product.images?.[0] || product.image || '/assets/sample-product.jpg'} 
               alt={product.name} 
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = '/assets/sample-product.jpg';
+              }}
               className="w-full h-full object-cover" 
             />
           </div>

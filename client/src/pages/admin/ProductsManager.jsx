@@ -47,13 +47,60 @@ const ProductsManager = () => {
     }
   };
 
+  const compressImage = (file) => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (event) => {
+        const img = new Image();
+        img.src = event.target.result;
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const MAX_WIDTH = 1000;
+          const MAX_HEIGHT = 1400;
+          let width = img.width;
+          let height = img.height;
+
+          if (width > height) {
+            if (width > MAX_WIDTH) {
+              height *= MAX_WIDTH / width;
+              width = MAX_WIDTH;
+            }
+          } else {
+            if (height > MAX_HEIGHT) {
+              width *= MAX_HEIGHT / height;
+              height = MAX_HEIGHT;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+          canvas.toBlob(
+            (blob) => {
+              resolve(blob || file);
+            },
+            'image/jpeg',
+            0.85
+          );
+        };
+        img.onerror = () => resolve(file);
+      };
+      reader.onerror = () => resolve(file);
+    });
+  };
+
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
-    const formData = new FormData();
-    formData.append('image', file);
+    if (!file) return;
     setUploading(true);
 
     try {
+      const compressedBlob = await compressImage(file);
+      const formData = new FormData();
+      formData.append('image', compressedBlob, file.name);
+
       const config = {
         headers: { 'Content-Type': 'multipart/form-data' },
       };
@@ -61,7 +108,8 @@ const ProductsManager = () => {
       setImage(data.image);
       setUploading(false);
     } catch (error) {
-      console.error(error);
+      console.error('Image upload error:', error);
+      alert('Failed to upload image. Please try again.');
       setUploading(false);
     }
   };
@@ -180,7 +228,15 @@ const ProductsManager = () => {
         <div className="flex flex-col items-center gap-4 w-full md:w-1/3">
           <div className="w-52 h-72 bg-white border-2 border-dashed border-gray-300 flex items-center justify-center rounded-2xl relative overflow-hidden shadow-inner">
             {image ? (
-              <img src={image} alt="Preview" className="w-full h-full object-cover" />
+              <img 
+                src={image} 
+                alt="Preview" 
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = '/assets/sample-product.jpg';
+                }}
+                className="w-full h-full object-cover" 
+              />
             ) : (
               <div className="text-center px-4">
                 <svg className="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48">
@@ -193,8 +249,8 @@ const ProductsManager = () => {
             )}
             <input type="file" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onChange={uploadFileHandler} />
           </div>
-          {uploading && <p className="text-sm font-semibold text-primary">Uploading image...</p>}
-          <label className="bg-[#004D3D] text-white font-bold py-2.5 px-8 rounded-full hover:bg-opacity-90 cursor-pointer text-sm shadow-sm">
+          {uploading && <p className="text-sm font-semibold text-primary animate-pulse">Uploading image...</p>}
+          <label className="bg-[#004D3D] text-white font-bold py-2.5 px-8 rounded-full hover:bg-opacity-90 cursor-pointer text-sm shadow-sm transition-all">
             Upload Image
             <input type="file" className="hidden" onChange={uploadFileHandler} />
           </label>
@@ -207,7 +263,7 @@ const ProductsManager = () => {
             <label className="text-sm font-bold text-black ml-1">Product name</label>
             <input 
               type="text" 
-              value={name}
+              value={name} 
               onChange={(e) => setName(e.target.value)}
               className="border border-gray-400 rounded-lg px-4 py-2 outline-none focus:border-black w-full"
               required
@@ -263,7 +319,7 @@ const ProductsManager = () => {
               </div>
             </div>
             
-            <button type="submit" className="bg-[#004D3D] text-white font-bold py-2 px-8 rounded-lg hover:bg-opacity-90">
+            <button type="submit" className="bg-[#004D3D] text-white font-bold py-2 px-8 rounded-lg hover:bg-opacity-90 transition-all">
               {editingId ? 'Confirm' : 'Add'}
             </button>
           </div>
@@ -327,14 +383,22 @@ const ProductsManager = () => {
         ) : products.map(product => (
           <div key={product._id} className="flex flex-col bg-[#FAF6F0] rounded-t-[160px] rounded-b-[40px] shadow-sm pb-6">
             <div className="h-[420px] w-full mb-4">
-              <img src={product.images && product.images.length > 0 ? product.images[0] : ''} alt={product.name} className="w-full h-full object-cover rounded-t-[160px]" />
+              <img 
+                src={product.images && product.images.length > 0 ? product.images[0] : '/assets/sample-product.jpg'} 
+                alt={product.name} 
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = '/assets/sample-product.jpg';
+                }}
+                className="w-full h-full object-cover rounded-t-[160px]" 
+              />
             </div>
             <p className="text-center font-bold text-sm mb-4 px-4">{product.name}</p>
             <div className="flex justify-center gap-6">
-              <button onClick={() => handleEdit(product)} className="bg-[#004D3D] text-white text-xs font-bold py-2 px-8 rounded-full hover:bg-opacity-90 shadow-sm">
+              <button onClick={() => handleEdit(product)} className="bg-[#004D3D] text-white text-xs font-bold py-2 px-8 rounded-full hover:bg-opacity-90 shadow-sm transition-all">
                 Edit
               </button>
-              <button onClick={() => deleteHandler(product._id)} className="bg-red-600 text-white text-xs font-bold py-2 px-8 rounded-full hover:bg-red-700 shadow-sm">
+              <button onClick={() => deleteHandler(product._id)} className="bg-red-600 text-white text-xs font-bold py-2 px-8 rounded-full hover:bg-red-700 shadow-sm transition-all">
                 Remove
               </button>
             </div>

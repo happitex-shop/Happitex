@@ -67,7 +67,12 @@ connectDB().then(() => initDB());
 const app = express();
 
 app.use(cors());
-app.use(express.json());
+import path from 'path';
+import fs from 'fs';
+import Image from './models/Image.js';
+
+app.use(express.json({ limit: '15mb' }));
+app.use(express.urlencoded({ extended: true, limit: '15mb' }));
 
 app.get('/api', (req, res) => {
   res.send('API is running...');
@@ -80,9 +85,43 @@ app.use('/api/orders', orderRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/upload', uploadRoutes);
 
-import path from 'path';
-
 const __dirname = path.resolve();
+
+// Permanent MongoDB Atlas image server for /uploads/:filename
+app.get('/uploads/:filename', async (req, res) => {
+  try {
+    const { filename } = req.params;
+    const image = await Image.findOne({ filename });
+    if (image) {
+      const imgBuffer = Buffer.from(image.data, 'base64');
+      res.set('Content-Type', image.contentType || 'image/jpeg');
+      res.set('Cache-Control', 'public, max-age=31536000, immutable');
+      return res.send(imgBuffer);
+    }
+
+    // Check if filename is an ObjectId
+    if (filename.match(/^[0-9a-fA-F]{24}$/)) {
+      const imgById = await Image.findById(filename);
+      if (imgById) {
+        const imgBuffer = Buffer.from(imgById.data, 'base64');
+        res.set('Content-Type', imgById.contentType || 'image/jpeg');
+        res.set('Cache-Control', 'public, max-age=31536000, immutable');
+        return res.send(imgBuffer);
+      }
+    }
+
+    // Fallback to local disk if exists
+    const localFile = path.join(__dirname, '../client/public/uploads', filename);
+    if (fs.existsSync(localFile)) {
+      return res.sendFile(localFile);
+    }
+
+    res.status(404).send('Image not found');
+  } catch (err) {
+    res.status(404).send('Image error');
+  }
+});
+
 app.use('/uploads', express.static(path.join(__dirname, '../client/public/uploads')));
 
 const PORT = process.env.PORT || 5000;

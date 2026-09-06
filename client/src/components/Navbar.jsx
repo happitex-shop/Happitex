@@ -197,8 +197,12 @@ const Navbar = () => {
                       className="flex items-center gap-3 p-3 border-b border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors"
                     >
                       <img 
-                        src={product.images && product.images.length > 0 ? product.images[0] : ''} 
+                        src={product.images && product.images.length > 0 ? product.images[0] : '/assets/sample-product.jpg'} 
                         alt={product.name} 
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = '/assets/sample-product.jpg';
+                        }}
                         className="w-12 h-12 object-cover rounded-md bg-[#FAF6F0]"
                       />
                       <div className="flex flex-col flex-1 min-w-0">
@@ -328,8 +332,12 @@ const Navbar = () => {
                     className="flex items-center gap-3 p-3 border-b border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors"
                   >
                     <img 
-                      src={product.images && product.images.length > 0 ? product.images[0] : ''} 
+                      src={product.images && product.images.length > 0 ? product.images[0] : '/assets/sample-product.jpg'} 
                       alt={product.name} 
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/assets/sample-product.jpg';
+                      }}
                       className="w-12 h-12 object-cover rounded-md bg-[#FAF6F0]"
                     />
                     <div className="flex flex-col flex-1 min-w-0">

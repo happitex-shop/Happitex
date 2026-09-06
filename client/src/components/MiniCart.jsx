@@ -42,6 +42,10 @@ const MiniCart = ({ isOpen, onClose }) => {
                 <img 
                   src={item.product.images && item.product.images[0] ? item.product.images[0] : '/assets/sample-product.jpg'} 
                   alt={item.product.name} 
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = '/assets/sample-product.jpg';
+                  }}
                   className="w-16 h-20 sm:w-18 sm:h-22 object-cover rounded-md bg-[#FAF6F0] flex-shrink-0" 
                 />
                 <div className="flex flex-col justify-between flex-1 min-w-0">

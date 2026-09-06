@@ -13,10 +13,14 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className="bg-[#FAF6F0] rounded-t-[100px] rounded-b-[30px] shadow-sm flex flex-col font-poppins pb-6 h-full product-container overflow-hidden">
-      <Link to={`/products/${product._id}`} className="block w-full h-[360px] overflow-hidden rounded-t-[100px] rounded-b-[20px] bg-gray-100">
+      <Link to={`/products/${product._id}`} className="block w-full h-[360px] overflow-hidden rounded-t-[100px] rounded-b-[20px] bg-[#FAF6F0]">
         <img 
-          src={product.images && product.images.length > 0 ? product.images[0] : ''} 
+          src={product.images && product.images.length > 0 ? product.images[0] : '/assets/sample-product.jpg'} 
           alt={product.name} 
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = '/assets/sample-product.jpg';
+          }}
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105" 
         />
       </Link>
